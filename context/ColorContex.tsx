@@ -8,6 +8,7 @@ interface ColorContextType {
   generateRandomColors: () => void;
 }
 
+
 const ColorContext = createContext<ColorContextType | undefined>(
   undefined
 );
@@ -47,6 +48,8 @@ export function ColorProvider({
     </ColorContext.Provider>
   );
 }
+
+
 
 export function useColorContext() {
   const context = useContext(ColorContext);
