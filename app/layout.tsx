@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
+import {ColorProvider} from "@/context/ColorContex";  
 
 export const metadata: Metadata = {
   title: "Color Palette Generator",
@@ -9,14 +10,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: LayoutProps<"/">) {
+}: { children: React.ReactNode }) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
-        <AppRouterCacheProvider>
-          {children}
-        </AppRouterCacheProvider>
+        <ColorProvider>
+          <AppRouterCacheProvider>
+            {children}
+          </AppRouterCacheProvider>
+        </ColorProvider>
       </body>
     </html>
   );
 }
+  
